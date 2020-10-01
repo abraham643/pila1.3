@@ -1,0 +1,117 @@
+import java.util.Scanner;
+
+public class PilaDos {
+int a=10,num,num2,num3;
+int pilaN [] = new int [a];
+int pila2 [] = new int [a];
+int pila3 [] = new int [a];
+int tope = 0; 
+int tope2 = 0;
+int tope3 = 0;
+// creamos variables fuera del metodo " main" y de los "void"
+// para que cualquier metodo tenga acceso a las variables.
+
+  public void llenar ()// con este metodo lo que se hace es llenar las pilas
+  {
+      
+      
+       for ( int i = 0; i < a ;i++) //tratamos de comparar una variable x
+    // de esta manera se entra al ciclo que va a llenar la pila
+       {
+     if (tope < a ) //este es el ciclo que llena la primer pila
+     {
+     pilaN [tope] = (int) (Math.random() * 100+1); 
+     num++;
+     tope++;
+     } else {System.out.println ("pila llena"); 
+     
+     break; }
+     
+
+    }
+    
+  }
+  
+  public void llenar2() {
+   //esta es la segunda pila, se reutilizo el ciclo de la primer pila 
+   // pero se cambiaron las variables 
+     for ( int j = 0; j < a; j++) {
+     if (tope2 < a ) {
+     pila2 [tope2] = (int) (Math.random () * 200+100); 
+     num2++;
+     tope2++;
+     } else {System.out.print (" pila llena "); 
+     break;  }
+     }
+  
+  }
+  public void mostrar () //este metodo lo que hace es mostrar las pilas
+  //pero por alguna razon, sale en forma de matriz ,F.
+  {
+      System.out.println("Pila 1:");
+  for (int i=0; i<a; i++) {
+     System.out.print ( pilaN [i] + " " );
+    } 
+  }
+  
+  public void mostrar2 (){
+      System.out.println("\nPila 2:");
+  for (int j=0; j<a; j++) {
+     System.out.print(  pila2 [j] + " ");
+     }
+  }
+  
+  public void eliminar () // este metodo elimina los valores de la pila
+  { 
+  tope--;
+ System.out.println ("dato eliminado");
+ tope2--;
+ System.out.println ("dato eliminado");
+  }
+  public void sumar(){
+      //Aqui crearemos otra pila con los valores de la suma de la pila 1 y 2
+      for (int j = 0; j < a; j++) {
+          pila3[j]=pilaN[j]+pila2[j];
+          num3++;
+          tope3++;
+      }
+  }
+  public void verS(){
+      //Aqui mostramos la nueva pila
+      for (int i=0; i<a; i++) {
+          System.out.print(pila3[i]+" ");
+      }
+  }
+    public static void main(String[] args) //el metodo main llama a los otros 
+            //otros metodos.
+    {
+    PilaDos c = new PilaDos ();
+         Scanner sc = new Scanner (System.in);
+             
+          int opt = 0;
+          do {
+              System.out.println("\n1. Llenar" + "\n2. Mostar" );
+              System.out.println ( "\n3. Eliminar"+ "\n4. sumar pilas");
+              System.out.println ( "\n5. suma de las pilas" + "\n6. Salir");
+                      
+         
+           switch (opt = sc.nextInt() ){
+               case 1: c.llenar(); c.llenar2 ();
+                break;
+               case 2: c.mostrar (); c.mostrar2(); 
+                break;
+               case 3: c.eliminar ();
+                break;
+               case 4:
+                   c.sumar();
+                   break;
+               case 5:
+                   c.verS();
+                   break;
+                   default: 
+                   System.out.println ("digite una opcion ");
+                break;
+           }
+        } while (opt !=6);
+    }  
+}
